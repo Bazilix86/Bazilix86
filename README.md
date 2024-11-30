@@ -9,7 +9,7 @@
 
 ###
 
-<img align="right" height="150" src="https://giphy.com/gifs/JIX9t2j0ZTN9S"  />
+<img align="right" height="150" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fgiphy.com%2Fexplore%2Fhacker&psig=AOvVaw2VFt7alM5ochIGwH1u4Lei&ust=1733083336556000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCJCOn-DshIoDFQAAAAAdAAAAABAE"  />
 
 ###
 
