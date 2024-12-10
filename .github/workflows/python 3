@@ -1,0 +1,20 @@
+a = "Hello, World!"
+print(a[1])    # bu kodni javibi "e" chiqadi chunki python 0dan boshlab sanaydi va 2-da turgan harf bu e shuni uchun e javobi chiqadi 
+
+
+for x in "banana":
+  print(x)     # bu yerda for sikli yordamida matndagi har bir belgini ketma-ket chiqaradi.yani har biriga x berilib
+#1-sikl: x = 'b' → Ekranda: b
+#2-sikl: x = 'a' → Ekranda: a
+#3-sikl: x = 'n' → Ekranda: n
+#4-sikl: x = 'a' → Ekranda: a
+#5-sikl: x = 'n' → Ekranda: n
+#6-sikl: x = 'a' → Ekranda: a    javob shu ko'rinishda chiqadi
+
+
+a = "Hello, World!"
+print(len(a))
+   #bu yerda len() funksiyasi berilgan matnning uzunligini, ya'ni undagi belgilarning umumiy sonini hisoblaydi.
+#"Hello, World!" matnida 13 ta belgi bor (jumladan bo'shliq va belgilovchi belgilar ham hisoblanadi).
+
+
