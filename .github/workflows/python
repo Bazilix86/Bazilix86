@@ -1,1 +1,9 @@
-
+x= 10 
+y="salom"
+z=15
+print(x)
+print(y)
+print(z)
+print(x,y)#son bilan so'zni yozish uchun " , " ishlatsak buladi 
+print(x+z)#songa sonni qo'shish amali
+print(x+y)#xatolik beradi sababi songa so'zni qo'shib bo'lmaydi 
