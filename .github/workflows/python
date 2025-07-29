@@ -57,7 +57,128 @@ myfunc()
 
 print("Python is " + x)   #bu oynada ichki o'zgaruvchi o'rnini globaldeb berilayotganligi uchun birdanglobal ishlatib ketiladi javob esa :    Python is fantastic
 
+a = "Hello, World!"
+print(a[1])    # bu kodni javibi "e" chiqadi chunki python 0dan boshlab sanaydi va 2-da turgan harf bu e shuni uchun e javobi chiqadi 
 
+
+for x in "banana":
+  print(x)     # bu yerda for sikli yordamida matndagi har bir belgini ketma-ket chiqaradi.yani har biriga x berilib
+#1-sikl: x = 'b' → Ekranda: b
+#2-sikl: x = 'a' → Ekranda: a
+#3-sikl: x = 'n' → Ekranda: n
+#4-sikl: x = 'a' → Ekranda: a
+#5-sikl: x = 'n' → Ekranda: n
+#6-sikl: x = 'a' → Ekranda: a    javob shu ko'rinishda chiqadi
+
+
+a = "Hello, World!"
+print(len(a))
+   #bu yerda len() funksiyasi berilgan matnning uzunligini, ya'ni undagi belgilarning umumiy sonini hisoblaydi.
+#"Hello, World!" matnida 13 ta belgi bor (jumladan bo'shliq va belgilovchi belgilar ham hisoblanadi).
+
+
+b = "Hello, World!"
+print(b[2:5])
+# bu kodda "b" dagi 2-harf bilan 5- harflar oraligini oladi yani favob "llo" buladi
+ #enid kodga sal o'zgartirish kiritsak 
+b = "Hello, World!"
+print(b[:5])  #  bu hilatda bizga 5-harfgacha bulganini o'qiydi ya'ni javob "Hello" buladi
+
+#Agar biz bunday qilasak 
+
+b = "Hello, World!"
+print(b[2:])   #javob quyidagicha buladi "llo, World!" 
+
+b = "Hello, World!"
+print(b[-5:-2]) #bu holatda esa orqadan sanab keladi "orl" 
+
+a = "Hello, World!"
+print(a.upper())   # biz bu yerda "upper"dan foydalanganmiz bu esa barcha harflarni katta qilib beradi javob quyidagicha "HELLO, WORLD!"
+
+
+a = "Hello, World!"
+print(a.lower())  #bu yerda "lower"dan foydalanilgan bu esa barcha harflarni kichik holatga keltiradi "hello, world!"
+
+
+a = " Hello, World! "
+print(a.strip()) # returns "Hello, World!"  # Matnning boshidagi va oxiridagi bo'sh joylarni olib tashlash uchun `strip()` usuli ishlatildi "Hello, World1" yani boshi va ohiridagi bo'sh joylarni ollib tashlaydi
+
+
+
+a = "Hello, World!"
+print(a.replace("H", "J"))   #`replace()` usuli matndagi "H" ni "J" ga almashtiradi
+
+
+
+a = "Hello, World!"
+print(a.split(",")) # returns ['Hello', ' World!']   # bu yerda `split()` usuli yordamida vergul bo‘yicha matn bo‘linmoqda  natija " 'Hello', 'World' " holatida buladi
+
+
+age = 36
+txt = f"My name is John, I am {age}"
+print(txt)     #bu yerda f string bilan ishlangan natija quyidagicha buladi " My name is John, I am 36 "
+
+
+price = 59
+txt = f"The price is {price:.2f} dollars"
+print(txt)
+#bunda f-stringdagi "price:.2f" ga to'xtalsak bu raqamni yaxlitlashda ishlatiladi yani "59" ni 59.00 qilib beradi yoki 56.02574 bo'lsa uni bizgaa "56.02" qilib beradi 2f ni o'rniga hohlagan sonni kiritsak buladi  masalan .3f yoki .4f
+
+
+txt = f"The price is {20 * 59} dollars"
+print(txt)   #biz f string orqali {} ichida amallar bajarsak ham buladi 
+
+
+txt = "We are the so-called \"Vikings\" from the north."
+print(txt) 
+ # bu yerda natija quyidagicha chiqadi " We are the so-called "Vikings" from the north."
+
+Method	Ta'rifi
+capitalize()	Birinchi belgini katta harfga o'zgartiradi
+casefold()	Matnni kichik harfga o'zgartiradi
+center()	Matnni markazlashtirilgan holatda qaytaradi
+count()	Belgilangan qiymat matnda necha marta uchrashini qaytaradi
+encode()	Matnni kodlangan versiyasini qaytaradi
+endswith()	Agar matn belgilanilgan qiymat bilan tugasa, True qiymatini qaytaradi
+expandtabs()	Matndagi tablar (bo'sh joylar) o'lchamini sozlaydi
+find()	Matnda belgilangan qiymatni qidiradi va joylashuvini qaytaradi
+format()	Matnda belgilangan qiymatlarni formatlaydi
+format_map()	Matnda belgilangan qiymatlarni formatlaydi
+index()	Matnda belgilangan qiymatni qidiradi va joylashuvini qaytaradi
+isalnum()	Agar matndagi barcha belgilar alfanumerik bo'lsa, True qaytaradi
+isalpha()	Agar matndagi barcha belgilar faqat harflardan iborat bo'lsa, True qaytaradi
+isascii()	Agar matndagi barcha belgilar ASCII harflari bo'lsa, True qaytaradi
+isdecimal()	Agar matndagi barcha belgilar raqam bo'lsa, True qaytaradi
+isdigit()	Agar matndagi barcha belgilar raqamlar bo'lsa, True qaytaradi
+isidentifier()	Agar matn identifikator (o'zgaruvchi nomi) bo'lsa, True qaytaradi
+islower()	Agar matndagi barcha belgilar kichik harflardan iborat bo'lsa, True qaytaradi
+isnumeric()	Agar matndagi barcha belgilar raqamlar bo'lsa, True qaytaradi
+isprintable()	Agar matndagi barcha belgilar chiqarilishi mumkin bo'lsa, True qaytaradi
+isspace()	Agar matndagi barcha belgilar bo'sh joylar bo'lsa, True qaytaradi
+istitle()	Agar matn unvon qoidalariga muvofiq bo'lsa, True qaytaradi
+isupper()	Agar matndagi barcha belgilar katta harflardan iborat bo'lsa, True qaytaradi
+join()	Elementlarni matnning oxiriga qo'shadi
+ljust()	Matnni chap tomondan joylashtirilgan holatda qaytaradi
+lower()	Matnni kichik harfga o'zgartiradi
+lstrip()	Matndan chapdagi bo'sh joylarni olib tashlaydi
+maketrans()	Tarjimon jadvali qaytaradi, tarjima qilish uchun ishlatiladi
+partition()	Matnni uch qismga ajratib, ularni keltiruvchi tuple qaytaradi
+replace()	Belgilangan qiymatni boshqa qiymatga almashtiradi
+rfind()	Matnda belgilangan qiymatni qidiradi va oxirgi joylashuvini qaytaradi
+rindex()	Matnda belgilangan qiymatni qidiradi va oxirgi joylashuvini qaytaradi
+rjust()	Matnni o'ng tomondan joylashtirilgan holatda qaytaradi
+rpartition()	Matnni uch qismga ajratib, ularni keltiruvchi tuple qaytaradi
+rsplit()	Matnni belgilanilgan ajratkich bo‘yicha bo‘lib, ro‘yxatni qaytaradi
+rstrip()	Matndan o‘ngdagi bo‘sh joylarni olib tashlaydi
+split()	Matnni belgilanilgan ajratkich bo‘yicha bo‘lib, ro‘yxatni qaytaradi
+splitlines()	Matnni qator bo‘yicha bo‘lib, ro‘yxatni qaytaradi
+startswith()	Agar matn belgilanilgan qiymat bilan boshlasa, True qaytaradi
+strip()	Matndan barcha bo‘sh joylarni olib tashlaydi
+swapcase()	Harflarning o'rnini almashtiradi, katta harf kichikga, kichik harf katta bo'ladi
+title()	Har bir so'zning birinchi harfini katta harfga o'zgartiradi
+translate()	Matnni tarjima qilish uchun tarjimon jadvalini qo‘llaydi
+upper()	Matnni katta harfga o'zgartiradi
+zfill()	Matnning boshiga belgilangan miqdordagi nol (0) qo'shadi
 
 
 
