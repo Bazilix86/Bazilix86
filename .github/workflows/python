@@ -7,3 +7,57 @@ print(z)
 print(x,y)#son bilan so'zni yozish uchun " , " ishlatsak buladi 
 print(x+z)#songa sonni qo'shish amali
 print(x+y)#xatolik beradi sababi songa so'zni qo'shib bo'lmaydi 
+
+
+str #belgilar uchn sihlatiladi " " , ' ' lar bilan qo'llaniladi
+int #butun sonlarni saqlashda ishlatiladi masalan: 5 yoki 7,10 va hokazo
+float #o'nlik sonlarni saqlashda ishladitadi masalan : 1,9 yoki 18,3 ,20,5 va hokazo
+
+
+
+myvar = "John"
+my_var = "John"
+_my_var = "John"
+myVar = "John"
+MYVAR = "John"
+myvar2 = "John"   # bu yerda myvar o'zgaruvchi sifatida kiritilayabdi
+
+#Python kalit so'zlaridan foydalanib bo'lmaydi (masalan, if, for, while, def kabi). shuning uchun tepadagi misolga o'xshash kalitlardan foydalaniladi
+
+
+
+fruits = ["apple", "banana", "cherry"]
+x, y, z = fruits
+print(x)
+print(y)
+print(z)  # biz bu yerda yozgan oynamizni ishlatib ko'rsak bizga " apple banana cherry" degan so'zlar kambinatsiyasi kelib chiqadi
+
+
+x = "awesome"    # global o'zgaruvchi
+
+def myfunc():
+  x = "fantastic"   # lokal o'zgaruvchi 
+  print("Python is " + x)
+
+myfunc()
+
+print("Python is " + x)    # biz bu yozgan oynamizni ishga tushirsak biz :  Python is fantastic
+                                                                            python is awesome
+                            degan oynani ko'ramiz . endi global va lokal oynalarni farqini ko'rib chiqamiz.lokal o'zgaruvchi funcsiya ichida birinchi o'qiladi agar lokar o'zgaruvchi bulmasa global o'zgaruvchi olinadi.
+
+
+
+x = "awesome"
+
+def myfunc():
+  global x
+  x = "fantastic"
+
+myfunc()
+
+print("Python is " + x)   #bu oynada ichki o'zgaruvchi o'rnini globaldeb berilayotganligi uchun birdanglobal ishlatib ketiladi javob esa :    Python is fantastic
+
+
+
+
+
